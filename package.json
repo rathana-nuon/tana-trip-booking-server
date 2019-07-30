@@ -1,0 +1,29 @@
+{
+  "name": "tana-trip-booking-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rathana-nuon/tana-trip-booking-server.git"
+  },
+  "author": "rathana-nuon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rathana-nuon/tana-trip-booking-server/issues"
+  },
+  "homepage": "https://github.com/rathana-nuon/tana-trip-booking-server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.4"
+  }
+}
