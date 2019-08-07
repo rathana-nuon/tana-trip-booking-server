@@ -1,5 +1,79 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header#header.header.header-hide
+    .container
+      #logo.pull-left
+        h1
+          a(href='#body').scrollto <span>e</span>Startup
+    nav#nav-menu-container
+      ul.nav-menu
+        li.menu-active
+          a(href="#hero") home
+        li 
+          a(href="#about-us") About
+        li
+          a(href="#features") Features
+        li
+          a(href="#screenshots") Screenshots
+        li 
+          a(href="#team") Team
+        li
+          a(href="#pricing") Pricing
+        li.menu-has-children
+          a(href="") Drop Down
+          ul
+            li
+              a(href="#") Drop Down 1
+            li
+              a(href="#") Drop Down 2
+            li
+              a(href="#") Drop Down 3
+            li
+              a(href="#") Drop Down 4
+            li
+              a(href="#") Drop Down 5
+        li 
+          a(href="#blog") Blog
+        li
+          a(href="#contact") Contact
+  
+  a(href="#").back-to-top
+    i.fa.fa-chevron-up
+
+  <!--==========================Footer============================-->
+  footer.footer
+    .container
+      .row
+        .col-md-12.col-lg-4
+          .footer-logo
+            a(href="#").navbar-brand eStartup
+            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.
+        .col-sm-6.col-md-3.col-lg-2
+          .list-item
+            h4 Aout Us
+            ul.list-unstyled
+              li
+                a(href="#") About us
+              li
+                a(href="#") Features item
+              li
+                a(href="#") Live streaming
+              li
+                a(href="#") Privacy Policy
+block foot
+  <!-- JavaScript Libraries -->
+  script(src='lib/jquery/jquery.min.js')
+  script(src='lib/jquery/jquery-migrate.min.js')
+  script(src='lib/bootstrap/js/bootstrap.bundle.min.js')
+  script(src='lib/superfish/hoverIntent.js')
+  script(src='lib/superfish/superfish.min.js')
+  script(src='lib/easing/easing.min.js')
+  script(src='lib/modal-video/js/modal-video.js')
+  script(src='lib/owlcarousel/owl.carousel.min.js')
+  script(src='lib/wow/wow.min.js')
+  <!-- Contact Form JavaScript File -->
+  script(src='contactform/contactform.js')
+
+  <!-- Template Main Javascript File -->
+  script(src='js/main.js')
