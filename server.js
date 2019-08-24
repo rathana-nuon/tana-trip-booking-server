@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const engine = require('ejs-locals');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const router = require('./app/routes/index');
 const db = require('./app/config/db.config');
@@ -16,7 +18,8 @@ db.sequelize.sync({force: false}).then(() => {
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('public', path.join(__dirname, 'public'));
-app.set('view engine', 'pug')
+app.engine('ejs', engine);
+app.set('view engine', 'ejs')
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -37,11 +40,35 @@ app.use(function (req, res, next) {
   next();
 });
 
+// initialize express-session to allow us track the logged-in user across sessions.
+app.use(session({
+  key: 'user_sid',
+  secret: 'somerandonstuffs',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
+}));
+
+
+// This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+// This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+      res.clearCookie('user_sid');        
+  }
+  next();
+});
+
 app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    next(createError(404));
+	var err = new Error('Not Found');
+	err.status = 404;
+  next(err);
+  res.status(404).render('404', {title: "Sorry, page not found"});
 });
 
 // error handler

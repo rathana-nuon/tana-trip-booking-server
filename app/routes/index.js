@@ -8,9 +8,10 @@ const authJwt = require('./verifyJwtToken');
 
 /* GET home page. */
 router.get('/', controller.home.index);
+router.get('/tana-login', controller.home.login);
+router.get('/tana-admin', controller.home.management);
 
 /* Router for api */
-
 router.post('/api/auth/signIn', controller.auth.signIn);
 router.post('/api/auth/signUp', [verifySignUp.checkDuplicateUserNameOrEmail], controller.auth.signUp);
 router.get('/api/auth/users', [authJwt.verifyToken], controller.auth.getUser);

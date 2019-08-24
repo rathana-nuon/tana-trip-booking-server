@@ -27,6 +27,10 @@ module.exports = (sequelize, Sequelize) => {
         connect:{
             type: Sequelize.STRING(20),
         },
+        count_post:{
+            type: Sequelize.INTEGER,
+            defaultValue: 0
+        },
         active:{
             type: Sequelize.BOOLEAN,
             defaultValue: true

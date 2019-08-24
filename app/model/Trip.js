@@ -16,8 +16,22 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.TEXT,
             allowNull: true
         },
+        location:{
+            type: Sequelize.STRING(100),
+            allowNull: false
+        },
+        count_place:{
+            type: Sequelize.INTEGER,
+            defaultValue: 0
+        },
+        status:{
+            type: Sequelize.STRING(50),
+            allowNull: true,
+            defaultValue: 'new'
+        },
         active:{
             type: Sequelize.BOOLEAN,
+            allowNull: false,
             defaultValue: true
         }
     });
